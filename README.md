@@ -75,7 +75,7 @@ Your final score determines your Bitcoiner rank:
 ## 🔗 Related Links
 
 - [Check out Mysteries of the Bitcoin Citadel - April 7th](https://twitter.com/paperstreet_inc)
-- [Follow on Twitter](https://twitter.com/your-twitter-handle)
+
 
 ## 🙏 Credits
 
