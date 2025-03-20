@@ -3744,21 +3744,16 @@ let firebaseInitialized = false;
 let database;
 
 function initializeFirebase() {
- // Firebase configuration directly in the code
-  // This is secure because you've added domain restrictions to your API key
-  const firebaseConfig = {
-    apiKey: "AIzaSyAAPnDr02pkl8qjYFfxf9FrjKveRYOdUFQ",
-    authDomain: "bitcointowerdefensegame.firebaseapp.com",
-    databaseURL: "https://bitcointowerdefensegame-default-rtdb.firebaseio.com",
-    projectId: "bitcointowerdefensegame",
-    storageBucket: "bitcointowerdefensegame.appspot.com",
-    messagingSenderId: "914790506593",
-    appId: "1:914790506593:web:5000cd86898a3b4a79ca20"
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  db = firebase.database();
+  if (!firebaseInitialized && typeof firebase !== 'undefined' && typeof firebaseConfig !== 'undefined') {
+    try {
+      firebase.initializeApp(firebaseConfig);
+      database = firebase.database();
+      firebaseInitialized = true;
+      console.log("Firebase initialized successfully");
+    } catch (error) {
+      console.error("Firebase initialization error:", error);
+    }
+  }
 }
 
 // Variables for leaderboard
