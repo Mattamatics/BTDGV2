@@ -54,6 +54,7 @@ let lives = 8;
   let gameState = 'playing';
 let showColdStorageDialog = false;  // Flag for cold storage dialog
 let coldStorageInput = '';  // Track cold storage input
+let coldStorageX = 0;  // Position of cold storage input field (will be set in drawUI)
 let endScreenDelay = 0;  // Delay before showing end screen
 let endScreenAlpha = 0;  // For fade-in animation
 let endScreenButtons = [
@@ -85,7 +86,7 @@ let bossWarningTimer = 0;  // Add timer for early warning
     // Group 4 (Waves 10-12): XRP FUDster Boss
     { enemies: ['shitcoiner', 'shitcoiner', 'nft', 'nft', 'CBDC', 'FUDster', 'FUDster', 'FUDster', 'FUDster', 'goldbug'], interval: 800 },
     { enemies: ['fiat', 'nft', 'CBDC', 'FUDster', 'FUDster', 'FUDster', 'FUDster', 'FUDster'], interval: 700 },
-    { enemies: ['nft', 'nft', 'nft', 'xrpFudster', 'FUDster', 'FUDster', 'FUDster', 'FUDster'], interval: 600 },
+    { enemies: ['nft', 'nft', 'nft', 'xrpFudster', 'FUDster', 'FUDster', 'FUDster'], interval: 600 },
     
     // Group 5 (Waves 13-15): Day Trading Temptation Boss
     { enemies: ['shitcoiner', 'shitcoiner', 'nft', 'nft', 'CBDC', 'CBDC', 'FUDster', 'FUDster', 'FUDster', 'FUDster'], interval: 600 },
@@ -692,6 +693,19 @@ let selectedTowerForUpgrade = null;  // Track which tower is selected for upgrad
                 coldStorageInput = '';
                 // Update high score
                 highScore = Math.max(highScore, coldStorage);
+            }
+            return;
+        }
+        
+        // Handle click on cold storage input field
+        if (mouseX > coldStorageX && mouseX < coldStorageX + 160 && 
+            mouseY > height - 40 && mouseY < height - 15) {
+            // On mobile, use prompt to show the numeric keyboard
+            let inputValue = prompt("Enter amount in millions of sats:", coldStorageInput);
+            if (inputValue !== null) {
+                // Validate input - numbers only
+                inputValue = inputValue.replace(/[^0-9.]/g, '');
+                coldStorageInput = inputValue;
             }
             return;
         }
@@ -3333,7 +3347,8 @@ function drawUI() {
     });
     
     // Right side: Cold Storage
-    let coldStorageX = width - 280;
+    // Update the global coldStorageX variable
+    coldStorageX = width - 280;
     
     // Cold storage title and amount
     noStroke();
