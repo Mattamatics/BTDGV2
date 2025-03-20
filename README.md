@@ -3,7 +3,7 @@
 
 ## 🎮 Play Now
 
-[Play Bitcoin Tower Defense Game](https://your-username.github.io/BitcoinTowerDefenseGame/)
+[Play Bitcoin Tower Defense Game](https://mattamatics.github.io/BTDGV2/)
 
 ## 📖 Description
 
