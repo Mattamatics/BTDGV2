@@ -79,12 +79,9 @@ Your final score determines your Bitcoiner rank:
 
 ## 🙏 Credits
 
-- Game Design & Development: [Your Name]
+
 - Special thanks to the Bitcoin community for inspiration
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
